@@ -26,6 +26,16 @@ document.addEventListener("DOMContentLoaded", function () {
     updateLocalStorage();
   }
 
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      const taskText = taskInput.value.trim();
+      if (taskText !== "") {
+        addTask(taskText);
+        taskInput.value = "";
+      }
+    }
+  });
+
   function updateLocalStorage() {
     const tasks = [];
     taskList.querySelectorAll("li").forEach(function (task) {
